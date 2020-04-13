@@ -9,7 +9,7 @@ module.exports = {
     './client/index.js',
   ],
   output: {
-    path: path.resolve(__dirname, 'client'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -19,7 +19,7 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     // match the output path
-    contentBase: path.resolve(__dirname, 'client'),
+    contentBase: path.resolve(__dirname, 'dist'),
     // enable HMR on the devServer
     hot: true,
     // match the output 'publicPath'
