@@ -4,9 +4,14 @@ export const anAction = () => ({
   type: types.AN_ACTION,
 });
 
+export const showMap = () => ({
+  type: types.SHOW_MAP,
+});
 
 
-
+export const showModal = () => ({
+  type: types.SHOW_MODAL
+})
 
 
 //left in for reference on REDUX-THUNK Shenanigans 

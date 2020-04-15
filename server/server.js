@@ -14,25 +14,20 @@ const PORT = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+console.log(path.join(__dirname, '../dist'))
 
-/**
+app.use("/", express.static(path.join(__dirname , '../dist')))
+/** 
  * define route handlers
  */
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 // respond with main app
-app.get('/styles.css', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/styles.css')));
-app.get('/', (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../client/index.html')));
 
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
 
-/**
- * express error handler
- * @see https://expressjs.com/en/guide/error-handling.html#writing-error-handlers
- */
-// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
