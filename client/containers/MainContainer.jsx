@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
   //toggles for rendering
   display: state.generic.display,
   modalDisplay: state.generic.modalDisplay,
+  mapsURL: state.generic.mapsURL,
+  modalText: state.generic.modalText,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,9 +27,12 @@ class MainContainer extends Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
           {this.props.display && <div className = {"map"}>
-         <AComponent 
+         <AComponent
+         id = {this.props.mapsURL[0].slice(8,-4)}
+         mapsURL = {this.props.mapsURL[0]}
          modalDisplay={this.props.modalDisplay}
          showModal={this.props.showModal}
+         modalText={this.props.modalText[0]}
          />
          </div>}
         </CSSTransitionGroup>

@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import ModalPortal from './ModalPortal'
 const AComponent = (props) => {
   useEffect(() => {
-    var container = document.getElementById("testerDisplay"),
-      inner = document.getElementById("mapDisplay");
+    let container = document.getElementById("tileDisplay");
+    let inner = document.getElementById("contentDisplay");
 
     // Mouse
-    var mouse = {
+    let mouse = {
       _x: 0,
       _y: 0,
       x: 0,
       y: 0,
       updatePosition: function (event) {
-        var e = event || window.event;
+        let e = event || window.event;
         this.x = e.clientX - this._x;
         this.y = (e.clientY - this._y) * -1;
       },
@@ -30,25 +30,25 @@ const AComponent = (props) => {
 
     //----------------------------------------------------
 
-    var counter = 0;
-    var refreshRate = 10;
-    var isTimeToUpdate = function () {
+    let counter = 0;
+    let refreshRate = 10;
+    let isTimeToUpdate = function () {
       return counter++ % refreshRate === 0;
     };
 
     //----------------------------------------------------
 
-    var onMouseEnterHandler = function (event) {
+    let onMouseEnterHandler = function (event) {
       console.log("on")
       update(event);
     };
 
-    var onMouseLeaveHandler = function () {
+    let onMouseLeaveHandler = function () {
       inner.style = "";
       console.log("leave")
     };
 
-    var onMouseMoveHandler = function (event) {
+    let onMouseMoveHandler = function (event) {
       console.log("moving")
       if (isTimeToUpdate()) {
         update(event);
@@ -57,7 +57,7 @@ const AComponent = (props) => {
 
     //----------------------------------------------------
 
-    var update = function (event) {
+    let update = function (event) {
       mouse.updatePosition(event);
       updateTransformStyle(
         (mouse.y / inner.offsetHeight / 2).toFixed(2),
@@ -65,8 +65,8 @@ const AComponent = (props) => {
       );
     };
 
-    var updateTransformStyle = function (x, y) {
-      var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+    let updateTransformStyle = function (x, y) {
+      let style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
       inner.style.mozTranform = style;
@@ -79,21 +79,33 @@ const AComponent = (props) => {
     container.onmousemove = onMouseMoveHandler;
     container.onmouseleave = onMouseLeaveHandler;
     container.onmouseenter = onMouseEnterHandler;
+    // if (checker){
+    //   // checker.style.backgroundImage='url("mapNice.png")'
+    // }
+
   }, [])
+
+  // checksum = document.getElementsByClassName(props.checker)
+
+
+  // let divStyle = {backgroundImage: `require(${props.mapsURL})`}
 
 
   return (
-    <div id="testerDisplay">
-      <div id="mapDisplay">
+
+    <div id="tileDisplay">
+      <div id="contentDisplay" className={props.id}>
         {/* {<img src="statics/mapDemoMedium.png"> </img>} */}
-          
-          </div>
+
+      </div>
 
       <button id='copyConfig' type='button' onClick={() => props.showModal()}>Do you have ANY idea how hard this is?</button>
-        <ModalPortal 
-          modalDisplay={props.modalDisplay}
-          onClose={props.showModal}
-        />
+      <ModalPortal
+        id={props.id}
+        modalText={props.modalText}
+        modalDisplay={props.modalDisplay}
+        onClose={props.showModal}
+      />
     </div>
   )
 }

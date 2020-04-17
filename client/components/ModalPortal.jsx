@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from "react-dom";
-import { CSSTransitionGroup } from 'react-transition-group'
 
 const ModalPortal = (props) => {
   let renderModal
@@ -12,28 +11,37 @@ const ModalPortal = (props) => {
   }
 
   else {
+    let displayText = []
+    let startingString = 0
+    console.log(props.modalText[0].length)
+    for (let i = 0; i < props.modalText.length; i++) {//  |?|
+      console.log("helloin for loop")
+      if (props.modalText[i] === "|" ) {
+        console.log("yeet")
+        displayText.push(props.modalText.slice(startingString, i))
+        displayText.push(<br></br>)
+        i += 2
+        startingString = i + 1
+      }
+    } 
+    console.log(displayText)
+
     document.getElementById("modal").style.height = "100%"
     document.getElementById("modal").style.opacity = "100%"
     renderModal = (
 
       <div className="backdrop">
-        <div className="modalInner">
-          How about some text
-          sl;dakfmlsa;kdmfa
-          sdf'lkasdnmf;lkasdnmfa.sdf';lkamsdf
-          asd
-          fasghj
-          fgh
-          jfg
-          hj
-          fgh
-          <div className="footer">
-            <button onClick={() => props.onClose()}>
-              Some Other text goes here
-              Close
-            </button>
-          </div>
+
+        <div className="modalInner" id={props.id + "modal"}>
         </div>
+        <div className="modalFooter">
+          {displayText}
+
+        </div>
+                    <button onClick={() => props.onClose()}>
+            Some Other text goes here
+            Close
+            </button>
       </div>
     );
 
