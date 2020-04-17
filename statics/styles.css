@@ -5,6 +5,7 @@ body {
   /* Centers the container in the middle of the screen */
   margin: 0;
   background-color: rgb(220, 220, 220);
+  background-image: url("TesterBackground.jpg")
 }
 
 #root {
@@ -46,8 +47,7 @@ main {
   justify-content: center;
   align-items: center;
 }
-
-#testerDisplay {
+#tileDisplay {
   /* This will come into play later */
   display: flex;
   flex-direction: column;
@@ -57,15 +57,16 @@ main {
   max-width: 900px;
   height: 700px;
   perspective: 40px;
-  background-color: lightblue
 }
 
-#mapDisplay {
+
+
+#contentDisplay {
   /* This will come into play later */
   height: 100%;
   width: 100%;
-  background-image: url("mapNice.png");
-  background-color: darkblue;
+  /* background-image: url("mapNice.png"); */
+
   box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
   transition: transform 0.5s;
   -webkit-transition: transform 0.5s;
@@ -91,10 +92,22 @@ main {
   transition: opacity 1000ms ease-in;
 }
 
+.mapNice{
+  background-image: url("mapNice.png")
+}
+
+#mapNicemodal{
+  background-image: url("mapDemoSmall.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
 /* modal stuff */
 
 .backdrop {
-  width: 50%;
+  width: 100%;
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -120,12 +133,14 @@ main {
   opacity: 0%;
   background-color: rgb(24, 53, 82, .9);
   transition: opacity 250ms ease-in;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-
 .modalInner {
-  position: fixed;
   border-radius: 5px;
   width: 50%;
   height: 50%;
@@ -133,5 +148,11 @@ main {
   padding: 30;  
   background-color: rgb(255, 255, 255, .4);
   transition: height 5000ms ease-in;
+}
 
+.modalFooter{
+  width: 50%;
+  font-size:25px;
+  font-weight: 700;
+  color: rgb(255, 255, 255, .8);
 }
