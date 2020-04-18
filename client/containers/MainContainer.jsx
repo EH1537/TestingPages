@@ -25,6 +25,7 @@ class MainContainer extends Component {
 
     for (let i = 1; i < this.props.contentURL.length; i++) {
       personalTiles.push(<AComponent
+        key={`${i}PersonalTile`}
         id={this.props.contentURL[i].slice(8, -4)}
         contentURL={this.props.contentURL[i]}
         modalDisplay={this.props.modalDisplay}
@@ -35,7 +36,7 @@ class MainContainer extends Component {
 
     return (
       <main>
-        <button onClick={() => this.props.showMap()}>Map Redux</button>
+        <button onClick={() => this.props.showMap()}>Personal Things and Hobbies</button>
         <CSSTransitionGroup className="testingSpan"
           transitionName="mapTransition"
           transitionEnterTimeout={500}

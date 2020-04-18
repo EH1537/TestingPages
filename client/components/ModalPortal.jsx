@@ -14,8 +14,8 @@ const ModalPortal = (props) => {
       console.log("yeep")
       displayText.push(props.modalText.slice(startingString, i))
       displayText.push(<br></br>)
-      i += 2
-      startingString = i + 1
+      i += 1
+      startingString = i
     }
 
     document.getElementById("modal").style.height = "100%"

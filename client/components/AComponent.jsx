@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ModalPortal from './ModalPortal'
 const AComponent = (props) => {
   useEffect(() => {
-    let container = document.getElementById(props.id+"mapTileDisplay");
+    let container = document.getElementById(props.id+"TileDisplay");
     let inner = document.getElementById(props.id+"contentDisplay");
 
     // Mouse
@@ -39,17 +39,17 @@ const AComponent = (props) => {
     //----------------------------------------------------
 
     let onMouseEnterHandler = function (event) {
-      console.log("on")
+      console.log("on"+props.id)
       update(event);
     };
 
     let onMouseLeaveHandler = function () {
       inner.style = "";
-      console.log("leave")
+      console.log("leave" + props.id)
     };
 
     let onMouseMoveHandler = function (event) {
-      console.log("moving")
+      console.log("moving"+props.id)
       if (isTimeToUpdate()) {
         update(event);
       }
@@ -65,8 +65,8 @@ const AComponent = (props) => {
       );
     };
 
-    let updateTransformStyle = function (x, y) {
-      let style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+    let updateTransformStyle = function (x,y) {
+      let style = "rotateY(" + y + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
       inner.style.mozTranform = style;
@@ -93,11 +93,11 @@ const AComponent = (props) => {
 
   return (
 
-    <div id={props.id+"mapTileDisplay"} className = "tileDisplay">
+    <div id={props.id+"TileDisplay"} className = "tileDisplay">
       <div id={props.id+"contentDisplay"} className = "contentDisplay">
       </div>
 
-      <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>Do you have ANY idea how hard this is?</button>
+      <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>The Story</button>
       {/* <ModalPortal
         id={props.id}
         modalText={props.modalText}
