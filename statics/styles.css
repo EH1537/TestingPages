@@ -1,12 +1,27 @@
+h1{
+  color:  rgb(220, 220, 220);
+  font-weight: 750;
+}
+h2{
+  color:  rgb(220, 220, 220);
+  font-weight: 750;
+}
+
 body {
   /* Full screen width and height */
   width: 100%;
   min-height: 100vh;
   /* Centers the container in the middle of the screen */
   margin: 0;
+  color: rgb(220, 220, 220);
   background-color: rgb(220, 220, 220);
   background-image: url("TesterBackgroundRock.jpg");
   font-family: "Lucida Console", Monaco, monospace;
+}
+
+button{
+  padding:5px;
+  margin: 10px;
 }
 
 #root {
@@ -56,7 +71,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   height: 700px;
   perspective: 40px;
 }
@@ -105,6 +120,10 @@ main {
 
 #MartialArtscontentDisplay {
   background-image: url("MartialArts.jpg")
+}
+
+#ComputerBuildcontentDisplay {
+  background-image: url("ComputerBuild.jpg")
 }
 
 .modalInner img {
@@ -165,7 +184,11 @@ main {
 }
 
 .modalInner {
-  text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 100%;
   border-radius: 5px;
   width: 100%;
   height: 85%;
