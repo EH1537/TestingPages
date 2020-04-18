@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import ModalPortal from './ModalPortal'
 const AComponent = (props) => {
   useEffect(() => {
-    let container = document.getElementById("tileDisplay");
-    let inner = document.getElementById("contentDisplay");
+    let container = document.getElementById(props.id+"mapTileDisplay");
+    let inner = document.getElementById(props.id+"contentDisplay");
 
     // Mouse
     let mouse = {
@@ -93,19 +93,17 @@ const AComponent = (props) => {
 
   return (
 
-    <div id="tileDisplay">
-      <div id="contentDisplay" className={props.id}>
-        {/* {<img src="statics/mapDemoMedium.png"> </img>} */}
-
+    <div id={props.id+"mapTileDisplay"} className = "tileDisplay">
+      <div id={props.id+"contentDisplay"} className = "contentDisplay">
       </div>
 
-      <button id='copyConfig' type='button' onClick={() => props.showModal()}>Do you have ANY idea how hard this is?</button>
-      <ModalPortal
+      <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>Do you have ANY idea how hard this is?</button>
+      {/* <ModalPortal
         id={props.id}
         modalText={props.modalText}
         modalDisplay={props.modalDisplay}
         onClose={props.showModal}
-      />
+      /> */}
     </div>
   )
 }
