@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import ModalPortal from './ModalPortal'
-const AComponent = (props) => {
+const DetailComponent = (props) => {
   useEffect(() => {
     let container = document.getElementById(props.id+"TileDisplay");
     let inner = document.getElementById(props.id+"contentDisplay");
@@ -66,7 +65,7 @@ const AComponent = (props) => {
     };
 
     let updateTransformStyle = function (x,y) {
-      let style = "rotateY(" + y + "deg)";
+      let style = "rotateY(" + 3*y + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
       inner.style.mozTranform = style;
@@ -85,12 +84,6 @@ const AComponent = (props) => {
 
   }, [])
 
-  // checksum = document.getElementsByClassName(props.checker)
-
-
-  // let divStyle = {backgroundImage: `require(${props.mapsURL})`}
-
-
   return (
 
     <div id={props.id+"TileDisplay"} className = "tileDisplay">
@@ -98,14 +91,8 @@ const AComponent = (props) => {
       </div>
 
       <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>The Story</button>
-      {/* <ModalPortal
-        id={props.id}
-        modalText={props.modalText}
-        modalDisplay={props.modalDisplay}
-        onClose={props.showModal}
-      /> */}
     </div>
   )
 }
 
-export default AComponent;
+export default DetailComponent;

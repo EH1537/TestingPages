@@ -4,10 +4,13 @@ export const anAction = () => ({
   type: types.AN_ACTION,
 });
 
-export const showMap = () => ({
-  type: types.SHOW_MAP,
+export const showPersonal = () => ({
+  type: types.SHOW_PERSONAL,
 });
 
+export const showBio = (numberData) => ({
+  type: types.SHOW_BIO,
+})
 
 export const showModal = (numberData) => ({
   type: types.SHOW_MODAL,

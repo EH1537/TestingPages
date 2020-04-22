@@ -23,7 +23,7 @@ const ModalPortal = (props) => {
 
     if (!props.modalDisplay) {
 
-        document.getElementById("modal").style.opacity = "0%"
+      document.getElementById("modal").style.opacity = "0%"
 
       setTimeout(() => {
         document.getElementById("modal").style.height = "0%"
@@ -31,21 +31,20 @@ const ModalPortal = (props) => {
       }, 900)
     }
 
-    console.log("source",props.source)
+    console.log("source", props.source)
     renderModal = (
 
       <div className="backdrop">
 
         <div className="modalInner" id={props.id + "modal"}>
-          <img src = {props.source}></img>
+          <img src={props.source}></img>
         </div>
         <div className="modalFooter">
           {displayText}
 
         </div>
         <button onClick={() => props.onClose(0)}>
-          Some Other text goes here
-          Close
+          Go Back
             </button>
       </div>
     );

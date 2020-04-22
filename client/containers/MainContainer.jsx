@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/action';
-import AComponent from '../components/AComponent';
+import DetailComponent from '../components/DetailComponent';
 import { CSSTransitionGroup } from 'react-transition-group'
 import ModalPortal from '../components/ModalPortal';
+import TechStackComponent from '../components/TechStackComponent';
+import AboutMeComponent from '../components/AboutMeComponent';
 
 const mapStateToProps = (state) => ({
   //toggles for rendering
-  display: state.generic.display,
+  personalDisplay: state.generic.personalDisplay,
+  bioDisplay: state.generic.bioDisplay,
   modalDisplay: state.generic.modalDisplay,
   contentURL: state.generic.contentURL,
   modalText: state.generic.modalText,
@@ -15,44 +18,63 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showMap: () => dispatch(actions.showMap()),
+  showPersonal: () => dispatch(actions.showPersonal()),
   showModal: (numberData) => dispatch(actions.showModal(numberData)),
+  showBio: () => dispatch(actions.showBio())
 });
 
 class MainContainer extends Component {
   render(props) {
-    let personalTiles = []
-
-    for (let i = 1; i < this.props.contentURL.length; i++) {
-      personalTiles.push(<AComponent
+    let personalTiles = [];
+    let bioTiles = [];
+    for (let i = 1; i < 4; i++) {
+      personalTiles.push(<DetailComponent
         key={`${i}PersonalTile`}
         id={this.props.contentURL[i].slice(8, -4)}
         contentURL={this.props.contentURL[i]}
         modalDisplay={this.props.modalDisplay}
         showModal={this.props.showModal}
-        modalNumber = {i}
+        modalNumber={i}
       />)
     }
-
     return (
       <main>
-        <button onClick={() => this.props.showMap()}>Personal Things and Hobbies</button>
+        <button onClick={() => this.props.showPersonal()}>Personal Things and Hobbies</button>
+        <button onClick={() => this.props.showBio()}>Biography</button>
         <CSSTransitionGroup className="testingSpan"
           transitionName="mapTransition"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-          {this.props.display && <div className={"displayStories"}>
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={100}>
+          {this.props.personalDisplay && <div className={"displayStories"}>
             {personalTiles}
-            <ModalPortal
-              id={this.props.contentURL[this.props.modalNumber].slice(8, -4)}
-              
-              source = {this.props.contentURL[this.props.modalNumber].slice(0, -4) + "Collage" + this.props.contentURL[this.props.modalNumber].slice(-4)}
-              modalText={this.props.modalText[this.props.modalNumber]}
+          </div>}
+          {this.props.bioDisplay && <div className={"displayStories"}>
+            <AboutMeComponent
+              key={`${5}PersonalTile`}
+              id={this.props.contentURL[5].slice(8, -4)}
+              contentURL={this.props.contentURL[5]}
               modalDisplay={this.props.modalDisplay}
-              onClose={this.props.showModal}
-              modalNumber={this.props.modalNumber}
+              showModal={this.props.showModal}
+              modalNumber={5}
+            />
+            <TechStackComponent
+              key={`${6}PersonalTile`}
+              id={this.props.contentURL[6].slice(8, -4)}
+              contentURL={this.props.contentURL[6]}
+              modalDisplay={this.props.modalDisplay}
+              showModal={this.props.showModal}
+              modalNumber={6}
             />
           </div>}
+          <ModalPortal
+            id={this.props.contentURL[this.props.modalNumber].slice(8, -4)}
+
+            source={this.props.contentURL[this.props.modalNumber].slice(0, -4) + "Collage" + this.props.contentURL[this.props.modalNumber].slice(-4)}
+            modalText={this.props.modalText[this.props.modalNumber]}
+            modalDisplay={this.props.modalDisplay}
+            onClose={this.props.showModal}
+            modalNumber={this.props.modalNumber}
+          />
         </CSSTransitionGroup>
 
       </main>
