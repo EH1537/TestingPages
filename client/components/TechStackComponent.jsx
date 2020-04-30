@@ -3,7 +3,7 @@ const TechStackComponent = (props) => {
 
   return (
     <div >
-      <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>My Tech Stack</button>
+      <button type='button' onClick={() => props.showModal(props.modalNumber)}>My Tech Stack</button>
     </div>
   )
 }

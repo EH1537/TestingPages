@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from "react-dom";
 
 const ModalPortal = (props) => {
   let renderModal
   // Render nothing if the "show" prop is false
-
+  useEffect(() => {
+    if (props.id) {
+      setTimeout(() => {
+        document.getElementsByClassName("backdrop")[0].scrollIntoView({
+          behavior: 'smooth',
+          block: "center"
+        });
+      }, 250)
+    }
+  }, [props.id])
 
   let displayText = []
   let startingString = 0

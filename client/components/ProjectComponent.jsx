@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-const DetailComponent = (props) => {
+const ProjectComponent = (props) => {
   useEffect(() => {
-    let container = document.getElementById(props.id+"TileDisplay");
-    let inner = document.getElementById(props.id+"contentDisplay");
+    let container = document.getElementById(props.id + "TileDisplay");
+    let inner = document.getElementById(props.id + "contentDisplay");
 
     // Mouse
     let mouse = {
@@ -38,7 +38,7 @@ const DetailComponent = (props) => {
     //----------------------------------------------------
 
     let onMouseEnterHandler = function (event) {
-      console.log("on"+props.id)
+      console.log("on" + props.id)
       update(event);
     };
 
@@ -48,7 +48,7 @@ const DetailComponent = (props) => {
     };
 
     let onMouseMoveHandler = function (event) {
-      console.log("moving"+props.id)
+      console.log("moving" + props.id)
       if (isTimeToUpdate()) {
         update(event);
       }
@@ -64,8 +64,8 @@ const DetailComponent = (props) => {
       );
     };
 
-    let updateTransformStyle = function (x,y) {
-      let style = "rotateY(" + 3*y + "deg)";
+    let updateTransformStyle = function (x, y) {
+      let style = "rotateY(" + 3 * y + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
       inner.style.mozTranform = style;
@@ -86,13 +86,16 @@ const DetailComponent = (props) => {
 
   return (
 
-    <div id={props.id+"TileDisplay"} className = "tileDisplay">
-      <div id={props.id+"contentDisplay"} className = "contentDisplay">
+    <div id={props.id + "TileDisplay"} className="tileDisplay">
+      <div id={props.id + "contentDisplay"} className="contentDisplay">
+      </div>
+      <div className="projectBtns">
+        <a className="projectLinks" type='button' href={`${props.demoLinks}`}>Demo</a>
+        <button type='button' onClick={() => props.showModal(props.modalNumber)}>The Story</button>
       </div>
 
-      <button id='copyConfig' type='button' onClick={() => props.showModal(props.modalNumber)}>The Story</button>
     </div>
   )
 }
 
-export default DetailComponent;
+export default ProjectComponent;

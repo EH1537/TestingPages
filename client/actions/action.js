@@ -17,6 +17,9 @@ export const showModal = (numberData) => ({
   payload: numberData
 })
 
+export const showProjects = () => ({
+  type: types.SHOW_PROJECTS,
+});
 
 //left in for reference on REDUX-THUNK Shenanigans 
 // export const findDeviceAsyncThunk = (name) => {
